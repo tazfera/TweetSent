@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+    <title>Page Results</title>
+<style type="text/css">
+<!--
+.positive {
+background-color: #E0FFFF;
+}
+
+.negative {
+background-color: #F9966B;
+}
+
+.neutral {
+background-color: #FFF8C6;
+}
+
+-->
+</style>
+
+  </head>
+  <body>
+    <form name="view" action="/view" method="post">
+      <input type="hidden" name="term" id="term" value="{{term}}" />
+      <input type="hidden" name="page" id="page" value="" />
+      {% for a in range(1,11) %}
+      <input type="button" value="{{a}}" onclick='document.getElementById("page").value = {{a}}; document.forms["view"].submit();' /> &nbsp;
+      {% end %}
+    </form>
+
+    <hr width="100%" />
+
+    {% for t in range(len(tweets)) %}
+    <textarea cols="150" rows="2" name="tweet[{{t}}]" class="{{classi[t]}}" readonly>{{tweets[t]}}</textarea><br />
+    <br /><br />
+    {% end %}
+
+  </body>
+</html>

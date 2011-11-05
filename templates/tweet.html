@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+    <title>Page Results</title>
+  </head>
+  <body>
+    <form name="search" action="/search" method="post">
+      <input type="hidden" name="term" id="term" value="{{term}}" />
+      <input type="hidden" name="page" id="page" value="" />
+      {% for a in range(1,11) %}
+      <input type="button" value="{{a}}" onclick='document.getElementById("page").value = {{a}}; document.forms["search"].submit();' /> &nbsp;
+      {% end %}
+    </form>
+
+    <hr width="100%" />
+
+    <form name="classify" action="/classify" method="post">
+      <input type="hidden" name="next_page" id="next_page" value="{{next_page}}" />
+      <input type="hidden" name="cterm" id="cterm" value="{{term}}" />
+
+      {% for t in range(len(tweets)) %}
+      <textarea cols="150" rows="2" name="tweet[{{t}}]" readonly>{{tweets[t]}}</textarea><br />
+      <input type="radio" name="ctype[{{t}}]" value="positive" checked="checked" />positive
+      <input type="radio" name="ctype[{{t}}]" value="negative" />negative
+      <input type="radio" name="ctype[{{t}}]" value="neutral"  />neutral
+      <input type="radio" name="ctype[{{t}}]" value="ignore"  />ignore
+      <br /><br />
+      {% end %}
+      <input type="submit" value="classify" />
+    </form>
+  </body>
+</html>
