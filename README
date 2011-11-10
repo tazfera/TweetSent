@@ -1,0 +1,50 @@
+==============================================
+
+TweetSent - Sentiment Analysis for Twitter
+
+==============================================
+
+Author:
+Taciano Tavares <taciano at gmail dot com>
+
+==============================================
+
+About:
+This software was developed to collect tweets and sorts them into positive,
+negative and neutral according to the sentiment or emotion expressed in it.
+
+
+Using:
+ - Collecting and Sorting Tweets
+	a) run the webserver
+		python webserver.py
+	b) access with your preferred browser
+		http://localhost:8888/
+	c) search a term
+	d) ranking the tweets (more tweets generate better results)
+
+ - coaching your system
+	a) python couch.py -p data/pos -n data/neg -m data/neu -l -b -s portuguese
+	(check your arguments)
+
+ - see your classified tweets
+	a) I didn't implement a search interface to display the final results,
+	   but you can access and view it using this url:
+		http://localhost:8888/view?page=1&term=love
+
+Dependencies:
+ - Cyclone WebServer
+	https://github.com/fiorix/cyclone
+ - Python-Twitter
+	http://code.google.com/p/python-twitter/
+ - Natural Language Toolkit - NLTK
+	http://www.nltk.org/
+
+
+Credits:
+Thanks to
+	- Lucas Fontes (this old friend gave me the idea of this software in a 
+	                discussion of trends and market needs)
+	- Gleicon Moraes (talk about sentiment analysis)
+	- Amanda Leal (my girlfriend and future wife)
+
